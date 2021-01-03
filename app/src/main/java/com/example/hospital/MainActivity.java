@@ -53,9 +53,10 @@ public class MainActivity extends AppCompatActivity {
 
                     String name = object.getString("firstMidName");
                     String surname = object.getString("lastName");
-                    int bedID = object.getInt("bedID");
+                    String address = object.getString("address");
+                    String contactNumber = object.getString("contactNumber");
 
-                    data.add(name + " " + surname+" "+bedID );
+                    data.add(name + " " + surname+" "+address+" "+ contactNumber);
 
                 } catch (JSONException e){
                     e.printStackTrace();
@@ -82,6 +83,13 @@ public class MainActivity extends AppCompatActivity {
             Log.d("REST error", error.getMessage());
         }
     };
+    public static final String EXTRA_MESSAGE = "com.example.universityapp.MESSAGE";
 
+    public void addPacientActivity (View view) {
+        Intent intent = new Intent(this,AddPacientActivity.class);
+        String message = "Dodaj studenta v seznam.";
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
 
 }
